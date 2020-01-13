@@ -1,0 +1,44 @@
+#zuul网关
+server:
+  port: 10010
+spring:
+  application:
+    name: leyou-gareway
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10086/eureka
+    #拉去服务间隔时间
+    registry-fetch-interval-seconds: 5
+
+
+zuul:
+  routes:
+    leyou-item-service: /item/**  #路由到商品微服务
+    search-service: /search/**  #路由到搜索微服务
+    leyou-user-service: /user/**  #路由到登录注册微服务
+    auth-service: /auth/**  #路由到授权中心微服务
+    cart-service: /cart/** #路由到购物车微服务
+    order-service: /order/** #路由到订单微服务
+  prefix: /api #网关前缀
+  add-host-header: true #网关转发时携带地址头信息
+  sensitive-headers:  #设为空，覆盖默认敏感头信息，可以设置setCookie
+
+leyou:
+  jwt:
+    pubKeyPath: F:\ideaWork\leyouProject\rsa\rsa.pub # 公钥地址
+    cookieName: LY_TOKEN
+  filter: #过滤白名单
+    allowPaths:
+      - /api/auth
+      - /api/search
+      - /api/user/register
+      - /api/user/check
+      - /api/user/code
+      - /api/item
+    # 以-开头表示集合,例如对象集合
+    # -name zhangsan
+    #  age 20
+    # -name lisi
+    #  age 30
+
