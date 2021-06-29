@@ -9,7 +9,6 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.leyou.user</groupId>
     <artifactId>leyou-user-interface</artifactId>
 
     <dependencies>
@@ -21,7 +20,7 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.10.1</version>
+            <version>2.12.3</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate.validator</groupId>
